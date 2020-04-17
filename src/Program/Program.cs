@@ -25,6 +25,8 @@ namespace Full_GRASP_And_SOLID
             recipe.FinalProduct = GetProduct("Café con leche");
             recipe.AddStep(new Step(GetProduct("Café"), 100, GetEquipment("Cafetera"), 120));
             recipe.AddStep(new Step(GetProduct("Leche"), 200, GetEquipment("Hervidor"), 60));
+            /*Usamos el principio SRP: La clase Recipe tenia dos responsabilidades, 
+            ahora la responsabilidad de imprimir esta en la nueva clase ConsolePrinter*/
             ConsolePrinter.PrintRecipe(recipe);
         }
 

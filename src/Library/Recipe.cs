@@ -25,6 +25,17 @@ namespace Full_GRASP_And_SOLID.Library
             this.steps.Remove(step);
         }
 
+
+        public double GetProductionCost()
+        {
+            double result = 0;
+            foreach (Step item in this.steps)
+            {
+                result = result + item.StepCost();
+            }
+            return result;
+        }
+
         public string GetTextToPrint()
         {
             string text = "";
@@ -35,6 +46,7 @@ namespace Full_GRASP_And_SOLID.Library
                 $" usando {step.Equipment.Description} durante {step.Time} \n";
             }
             
+            text += "\n Costo Total de produccion: "+this.GetProductionCost();
             return text;
     
         }
