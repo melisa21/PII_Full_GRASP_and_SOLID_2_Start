@@ -28,6 +28,7 @@ namespace Full_GRASP_And_SOLID.Library
         public string GetTextToPrint()
         {
             string text = "";
+            text += $"Receta de {this.FinalProduct.Description}: \n";
             foreach (Step step in this.steps)
             {
                 text += $"{step.Quantity} de {step.Input.Description}" +
