@@ -25,14 +25,30 @@ namespace Full_GRASP_And_SOLID.Library
             this.steps.Remove(step);
         }
 
-        public void PrintRecipe()
+
+        public double GetProductionCost()
         {
-            Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
+            double result = 0;
+            foreach (Step item in this.steps)
+            {
+                result = result + item.StepCost();
+            }
+            return result;
+        }
+
+        public string GetTextToPrint()
+        {
+            string text = "";
+            text += $"Receta de {this.FinalProduct.Description}: \n";
             foreach (Step step in this.steps)
             {
-                Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
-                    $"usando '{step.Equipment.Description}' durante {step.Time}");
+                text += $"{step.Quantity} de {step.Input.Description}" +
+                $" usando {step.Equipment.Description} durante {step.Time} \n";
             }
+            
+            text += "\n Costo Total de produccion: "+this.GetProductionCost();
+            return text;
+    
         }
     }
 }
